@@ -58,6 +58,12 @@ class MainActivity : ComponentActivity() {
                             )
                     )
                 }
+                Spacer(
+                    modifier = Modifier
+                        .height(40.dp)
+                )
+
+                SpandingSection()
             }
         }
     }
