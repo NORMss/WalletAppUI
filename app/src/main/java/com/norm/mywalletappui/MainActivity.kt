@@ -19,12 +19,16 @@ import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.material3.rememberTopAppBarState
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.unit.dp
 import com.norm.mywalletappui.components.ActionSection
 import com.norm.mywalletappui.components.CardSection
+import com.norm.mywalletappui.components.SpendingGraph
+import com.norm.mywalletappui.components.SpendingSelection
 import com.norm.mywalletappui.components.TopBar
 import com.norm.mywalletappui.ui.theme.MyWalletAppUITheme
+import kotlin.random.Random
 
 @OptIn(ExperimentalMaterial3Api::class)
 class MainActivity : ComponentActivity() {
@@ -58,12 +62,6 @@ class MainActivity : ComponentActivity() {
                             )
                     )
                 }
-                Spacer(
-                    modifier = Modifier
-                        .height(40.dp)
-                )
-
-                SpandingSection()
             }
         }
     }
@@ -91,5 +89,36 @@ fun MainScreen(modifier: Modifier = Modifier) {
             modifier = Modifier
                 .fillMaxWidth(),
         )
+        Spacer(
+            modifier = Modifier
+                .height(40.dp)
+        )
+        SpendingSelection(
+            modifier = Modifier
+                .fillMaxWidth(),
+        )
+        Spacer(
+            modifier = Modifier
+                .height(16.dp)
+        )
+        SpendingGraph(
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(200.dp)
+                .padding(horizontal = 16.dp)
+        )
+        Spacer(
+            modifier = Modifier
+                .height(100.dp)
+                .padding(16.dp)
+        )
     }
+}
+
+fun randomColor(minBrightness: Int = 80): Color {
+    val random = Random.Default
+    val red = random.nextInt(minBrightness, 256)
+    val green = random.nextInt(minBrightness, 256)
+    val blue = random.nextInt(minBrightness, 256)
+    return Color(red, green, blue)
 }
